@@ -1,0 +1,74 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "Electricity price API",
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/api/prices/current-hour": {
+            "get": {
+                "summary": "Get electricity price for current hour",
+                "operationId": "70ba18f0d91964926976270ea995284b",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Price not found for current hour"
+                    }
+                }
+            }
+        },
+        "/api/prices/next-hour": {
+            "get": {
+                "summary": "Get electricity price for next hour",
+                "operationId": "39a61c241800874e154204d1f8e3b00c",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "404": {
+                        "description": "Price not found for next hour"
+                    }
+                }
+            }
+        },
+        "/api/login": {
+            "post": {
+                "summary": "Get authentication token",
+                "operationId": "afd167661891a2c4c1b49a04643b9223",
+                "parameters": [
+                    {
+                        "name": "email",
+                        "in": "query",
+                        "required": true
+                    },
+                    {
+                        "name": "password",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    },
+                    "422": {
+                        "description": "The provided credentials are incorrect."
+                    }
+                }
+            }
+        },
+        "/api/logout": {
+            "get": {
+                "summary": "Destroy authentication tokens",
+                "operationId": "b5b0e4026ed3cc40a861d3e9c4b7f0e4",
+                "responses": {
+                    "200": {
+                        "description": "Successful operation"
+                    }
+                }
+            }
+        }
+    }
+}
