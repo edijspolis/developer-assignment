@@ -17,7 +17,7 @@ class DatabaseSeeder extends Seeder
         $date = new DateTime();
 
         for ($i=0;$i<10;$i++) {
-            Artisan::queue("app:get-prices " . $date->format('Y-m-d'));
+            Artisan::call("app:get-prices " . $date->format('Y-m-d'));
 
             $date->modify('-1 day');
         }

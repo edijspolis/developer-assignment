@@ -24,6 +24,7 @@ class DashboardController extends Controller
 
         $dateStart = new DateTime($request->date, $rigaTimezone);
         $dateEnd = clone $dateStart;
+        $dateFrontend = $dateStart->format('Y-m-d');
 
         $dateStart->setTime(0, 0);
         $dateEnd->setTime(23, 59, 59);
@@ -38,13 +39,13 @@ class DashboardController extends Controller
             ->get();
         
         $enabledDates =  DB::table('prices')
-            ->select([DB::raw('DATE(delivery_start) as date')])
+            ->select([DB::raw('DATE(delivery_end) as date')])
             ->groupBy('date')
             ->get();
 
         return Inertia::render('Dashboard', [
             'prices' => $prices,
-            'date' => $dateStart->format('Y-m-d'),
+            'date' => $dateFrontend,
             'enabled-dates' => $enabledDates->pluck('date')->toArray()
         ]);
     }
