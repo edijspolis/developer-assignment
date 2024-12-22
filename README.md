@@ -1,16 +1,28 @@
 Setup:
 
+cp .env.example .env
+
+composer require laravel/sail --dev
+
+php artisan sail:install
+
 ./vendor/bin/sail up -d
 
 ./vendor/bin/sail bash
 
 composer install
 
+npm install
+
 php artisan migrate
 
-php artisan db:seed can be run to get last 10 days of data
+php artisan key:generate
 
-multiplier settings set in .env file ELECTRICITY_PRICE_MULTIPLIER
+npm run build
+
+To get last 10 days of data run - php artisan db:seed
+
+multiplier settings are set in .env file ELECTRICITY_PRICE_MULTIPLIER
 
 api bearer token can be aquired with api/login
 
