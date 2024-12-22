@@ -1,6 +1,6 @@
 Setup:
 
-cp .env.example .env
+cp .env .example .env
 
 composer require laravel/sail --dev
 
